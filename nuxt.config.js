@@ -43,5 +43,9 @@ export default {
 
   axios: {
     // proxy: true
+  },
+
+  generate: {
+    dir: 'public'
   }
 }
