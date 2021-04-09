@@ -5,6 +5,7 @@
       <h1 class="title">
         lemony
       </h1>
+      <p>{{ip}}</p>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -28,7 +29,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      ip: null
+    }
+  },
+  methods: {
+    async fetchSomething() {
+      const ip = await this.$axios.$get('http://icanhazip.com')
+      this.ip = ip
+    }
+  }
+}
 </script>
 
 <style>
