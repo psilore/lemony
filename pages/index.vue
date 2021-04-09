@@ -21,45 +21,34 @@ export default {
     console() {
       return "bonk"
     },
+    async getDevice({ $axios }) {
+      const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE3IiwiYXBwTmFtZSI6ImIxZGZmNDdlLTk4NWMtMTFlYi1hOGIzLTAyNDJhYzEzMDAwMyJ9.8kp2Mq7rvT7BkCjT0sKE15iL6N7cRtlBoffYZalverM';
+      const apiUrl = 'https://sense.applio.tech/data/device/a84041935182d48d/latest';
+
+      const response = await $axios.$get(apiUrl, {
+        headers: {
+          'accept': 'application/json',
+          'grpc-metadata-authorization': accessToken,
+        }
+      })
+      .then(
+        (response) => {
+          console.log(response.data);
+          this.device = response.data;
+        },
+        (error) => {
+          console.log(error.response.status);
+        }
+      );
+
+    }
   },
   methods: {
-      async loadDevice(){
-          const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE3IiwiYXBwTmFtZSI6ImIxZGZmNDdlLTk4NWMtMTFlYi1hOGIzLTAyNDJhYzEzMDAwMyJ9.8kp2Mq7rvT7BkCjT0sKE15iL6N7cRtlBoffYZalverM';
-          const apiUrl = 'https://sense.applio.tech/data/device/a84041935182d48d/latest'
-          await $axios.$get(apiUrl, {
-            headers: {
-              "Authorization": `Bearer ${accessToken}`
-            }
-          })
-          .then(function( response ){
-              this.device = response.data;
-          }.bind(this));
-      }
   },
   async asyncData({ $axios }) {
     const ip = await $axios.$get('http://icanhazip.com')
     return { ip }
   },
-  async getBonk({ $axios }) {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE3IiwiYXBwTmFtZSI6ImIxZGZmNDdlLTk4NWMtMTFlYi1hOGIzLTAyNDJhYzEzMDAwMyJ9.8kp2Mq7rvT7BkCjT0sKE15iL6N7cRtlBoffYZalverM';
-    const apiUrl = 'https://sense.applio.tech/data/device/a84041935182d48d/latest'
-
-    const response = await $axios.$get(apiUrl, {
-      headers: {
-        "Content-Type": 'application/json',
-        "Authorization": `Bearer ${accessToken}`
-      }
-    })
-    .then(
-      (response) => {
-       // this.data = response.data;
-      },
-      (error) => {
-        console.log(error.response.status);
-      }
-    );
-    return response
-  }
 }
 </script>
 

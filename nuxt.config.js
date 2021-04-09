@@ -43,6 +43,10 @@ export default {
   },
 
   axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    accessToken: process.env.API_KEY,
+    credentials: false,
+    proxy: true
     //baseURL: 'https://sense.applio.tech/data'
     // proxy: true
   },
