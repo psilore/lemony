@@ -2,16 +2,7 @@
   "builds": [
     {
       "src": "nuxt.config.js",
-      "use": "@nuxtjs/vercel-builder",
-      "config": {
-        "serverFiles": ["package.json"]
-      }
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/:match*",
-      "destination": "https://sense.applio.tech/data/:match*"
+      "use": "@nuxtjs/vercel-builder"
     }
   ]
 }

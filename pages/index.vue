@@ -19,12 +19,11 @@ export default {
   computed: {
     async getDevice({ $axios }) {
 
-      const response = await $axios.$get('/sours')
+      const response = await $axios.$get('https://glacial-woodland-17786.herokuapp.com/sours/1')
       .then(
         (response) => {
-          console.log(response);
-          this.device = response[5].data;
-          return response.data
+          console.log(response)
+          this.device = response.Temperature;
         },
         (error) => {
           console.log(error.response.status);
