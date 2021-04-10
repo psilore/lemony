@@ -4,8 +4,7 @@
       <h1 class="title">
         lemony
       </h1>
-      <p>{{device}}</p>
-      <p>{{ip}}</p>
+      <p class="temp">{{device}} °C</p>
     </div>
   </div>
 </template>
@@ -18,37 +17,38 @@ export default {
     }
   },
   computed: {
-    console() {
-      return "bonk"
-    },
     async getDevice({ $axios }) {
+      //const apiUrl = 'https://sense.applio.tech/data/device/a84041935182d48d/latest';
       const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE3IiwiYXBwTmFtZSI6ImIxZGZmNDdlLTk4NWMtMTFlYi1hOGIzLTAyNDJhYzEzMDAwMyJ9.8kp2Mq7rvT7BkCjT0sKE15iL6N7cRtlBoffYZalverM';
-      const apiUrl = 'https://sense.applio.tech/data/device/a84041935182d48d/latest';
-
-      const response = await $axios.$get(apiUrl, {
+      const response = await $axios.$get('/api/device/a84041935182d48d/latest', {
+        method: 'GET',
+        mode: 'no-cors',
         headers: {
-          'accept': 'application/json',
-          'grpc-metadata-authorization': accessToken,
-        }
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        withCredentials: true,
+        credentials: 'same-origin'
       })
       .then(
         (response) => {
-          console.log(response.data);
-          this.device = response.data;
+          console.log(response);
+          this.device = response[5].data;
+          return response.data
         },
         (error) => {
           console.log(error.response.status);
         }
       );
-
     }
   },
   methods: {
   },
-  async asyncData({ $axios }) {
+/*   async asyncData({ $axios }) {
     const ip = await $axios.$get('http://icanhazip.com')
     return { ip }
-  },
+  }, */
 }
 </script>
 
@@ -61,7 +61,22 @@ export default {
   align-items: center;
   text-align: center;
 }
-
+.temp {
+  font-family:
+    'Quicksand',
+    'Source Sans Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+    color: #35495e;
+    letter-spacing: 0;
+}
 .title {
   font-family:
     'Quicksand',
