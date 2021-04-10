@@ -19,14 +19,14 @@ export default {
   computed: {
     async getDevice({ $axios }) {
       //const apiUrl = 'https://sense.applio.tech/data/device/a84041935182d48d/latest';
-      const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE3IiwiYXBwTmFtZSI6ImIxZGZmNDdlLTk4NWMtMTFlYi1hOGIzLTAyNDJhYzEzMDAwMyJ9.8kp2Mq7rvT7BkCjT0sKE15iL6N7cRtlBoffYZalverM';
+      //const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE3IiwiYXBwTmFtZSI6ImIxZGZmNDdlLTk4NWMtMTFlYi1hOGIzLTAyNDJhYzEzMDAwMyJ9.8kp2Mq7rvT7BkCjT0sKE15iL6N7cRtlBoffYZalverM';
       const response = await $axios.$get('/api/device/a84041935182d48d/latest', {
         method: 'GET',
         mode: 'no-cors',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
-          'Authorization': ACCESS_TOKEN,
+          'Authorization': accessToken,
         },
         withCredentials: true,
         credentials: 'same-origin'
@@ -62,6 +62,16 @@ export default {
   text-align: center;
 }
 .temp {
+  font-family:
+    'Quicksand',
+    'Source Sans Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
   font-weight: 700;
     font-size: 60px;
     color: #35495e;
