@@ -1,8 +1,8 @@
 export default function({ $axios, store, redirect, config }) {
   console.log('AXIOS PLUGIN LOADED');
-  const API_URL = 'https://glacial-woodland-17786.herokuapp.com/';
+  //const API_URL = 'https://glacial-woodland-17786.herokuapp.com/';
   $axios.onRequest(request => {
-    console.log('[ REQUEST ]' + API_URL)
+    //console.log('[ REQUEST ]' + API_URL)
     //request.headers.common['Accept'] = 'application/json';
     //request.headers.common['Grpc-Metadata-Authorization'] = accessToken;
     //request.headers.common['Access-Control-Allow-Origin'] = '*';

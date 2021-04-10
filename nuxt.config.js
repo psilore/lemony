@@ -36,14 +36,16 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    //'@nuxtjs/proxy'
   ],
   target: "static",
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  //build: {
-  //},
+  build: {
+    client: true,
+    server: true
+  },
 
-  ssr: false,
+  ssr: true,
 
   axios: {
     // baseURL: process.env.BASE_URL || process.env.VERCEL_URL || 'http://localhost:3000',

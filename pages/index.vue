@@ -16,10 +16,14 @@ export default {
       device: []
     }
   },
+  async fetch() {
+    const { data } = await this.$axios.get('https://glacial-woodland-17786.herokuapp.com/sours/1')
+    this.device = data.Temperature
+  },
   computed: {
     async getDevice({ $axios }) {
 
-      const response = await $axios.$get('https://glacial-woodland-17786.herokuapp.com/sours/1')
+      /* const { data: ip }= await $axios.$get('https://glacial-woodland-17786.herokuapp.com/sours/1')
       .then(
         (response) => {
           console.log(response)
@@ -28,7 +32,7 @@ export default {
         (error) => {
           console.log(error.response.status);
         }
-      );
+      ); */
     }
   },
 }
