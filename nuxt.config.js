@@ -38,7 +38,9 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/proxy'
   ],
+  mode: "universal",
 
+  target: "static",
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
