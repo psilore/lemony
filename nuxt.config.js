@@ -1,12 +1,3 @@
-const fs = require('fs')
-const path = require('path')
-
-if (process.env.NODE_ENV === 'production' && fs.existsSync('.env.prod')) {
-  require('dotenv').config({ path: path.join(__dirname, `.env.prod`) })
-} else {
-  require('dotenv').config()
-}
-
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
