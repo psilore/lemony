@@ -18,19 +18,8 @@ export default {
   },
   computed: {
     async getDevice({ $axios }) {
-      //const apiUrl = 'https://sense.applio.tech/data/device/a84041935182d48d/latest';
-      //const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE3IiwiYXBwTmFtZSI6ImIxZGZmNDdlLTk4NWMtMTFlYi1hOGIzLTAyNDJhYzEzMDAwMyJ9.8kp2Mq7rvT7BkCjT0sKE15iL6N7cRtlBoffYZalverM';
-      const response = await $axios.$get('/api/device/a84041935182d48d/latest', {
-        method: 'GET',
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-          'Authorization': accessToken,
-        },
-        withCredentials: true,
-        credentials: 'same-origin'
-      })
+
+      const response = await $axios.$get('/sours')
       .then(
         (response) => {
           console.log(response);
@@ -42,12 +31,6 @@ export default {
         }
       );
     }
-  },
-  methods: {
-  },
-  async asyncData({ $axios }) {
-    const ip = await $axios.$get('http://icanhazip.com')
-    return { ip }
   },
 }
 </script>

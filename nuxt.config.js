@@ -51,12 +51,12 @@ export default {
     //baseURL: 'https://sense.applio.tech/data'
     proxy: true
   },
-  proxy: {
+  /* proxy: {
     '/api/': {
       target: 'https://sense.applio.tech/data/',
       pathRewrite: {'^/api/': ''},
        changeOrigin: true }
-  },
+  }, */
   generate: {
     dir: 'public'
   }

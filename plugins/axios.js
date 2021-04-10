@@ -1,12 +1,11 @@
 export default function({ $axios, store, redirect, config }) {
   console.log('AXIOS PLUGIN LOADED');
-  //const apiUrl = 'https://sense.applio.tech/data/device/a84041935182d48d/latest';
-  const DEVICE_URL = 'device/a84041935182d48d/latest';
+  const API_URL = 'https://glacial-woodland-17786.herokuapp.com/';
   $axios.onRequest(request => {
-    console.log('[ REQUEST ]' + "/api/" + DEVICE_URL)
-    request.headers.common['Accept'] = 'application/json';
-    request.headers.common['Grpc-Metadata-Authorization'] = accessToken; //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE3IiwiYXBwTmFtZSI6ImIxZGZmNDdlLTk4NWMtMTFlYi1hOGIzLTAyNDJhYzEzMDAwMyJ9.8kp2Mq7rvT7BkCjT0sKE15iL6N7cRtlBoffYZalverM';
-    request.headers.common['Access-Control-Allow-Origin'] = '*';
+    console.log('[ REQUEST ]' + API_URL)
+    //request.headers.common['Accept'] = 'application/json';
+    //request.headers.common['Grpc-Metadata-Authorization'] = accessToken;
+    //request.headers.common['Access-Control-Allow-Origin'] = '*';
 
     return request
   })

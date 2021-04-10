@@ -1,4 +1,6 @@
 # lemony
+heroku login
+git push heroku master
 
 ## Build Setup
 
