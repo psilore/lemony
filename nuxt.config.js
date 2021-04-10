@@ -1,3 +1,12 @@
+const fs = require('fs')
+const path = require('path')
+
+if (process.env.NODE_ENV === 'production' && fs.existsSync('.env.prod')) {
+  require('dotenv').config({ path: path.join(__dirname, `.env.prod`) })
+} else {
+  require('dotenv').config()
+}
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -50,7 +59,10 @@ export default {
     proxy: true
   },
   proxy: {
-    '/api/': { target: 'https://sense.applio.tech/data/', pathRewrite: {'^/api/': ''}, changeOrigin: true }
+    '/api/': {
+      target: 'https://sense.applio.tech/data/',
+      pathRewrite: {'^/api/': ''},
+       changeOrigin: true }
   },
   generate: {
     dir: 'public'
