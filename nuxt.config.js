@@ -40,8 +40,10 @@ export default {
   ],
   target: "static",
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  //build: {
+  //},
+
+  ssr: false,
 
   axios: {
     baseURL: process.env.BASE_URL || 'http://localhost:3000',
