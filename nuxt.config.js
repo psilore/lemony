@@ -35,7 +35,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -45,12 +46,12 @@ export default {
   axios: {
     baseURL: process.env.BASE_URL || 'http://localhost:3000',
     accessToken: process.env.API_KEY,
-    credentials: false,
-    proxy: true
     //baseURL: 'https://sense.applio.tech/data'
-    // proxy: true
+    proxy: true
   },
-
+  proxy: {
+    '/api/': { target: 'https://sense.applio.tech/data/', pathRewrite: {'^/api/': ''}, changeOrigin: true }
+  },
   generate: {
     dir: 'public'
   }
